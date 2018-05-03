@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
-</body>
-</html>
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <p>hello {{ name|safe}}</p>
+</div>
+    <p>the local data and time {{ moment(current_time).format('LLL') }}.</p>
+    <p>that was {{ moment(current_time).fromNow(refresh=True) }}</p>
+{{ wtf.quick_form(form) }}
+{% endblock %}
